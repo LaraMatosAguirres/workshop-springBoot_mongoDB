@@ -2,7 +2,10 @@ package com.nelio.mongodb.dtos;
 
 import com.nelio.mongodb.domains.User;
 
-public class DTOUser {
+import java.io.Serializable;
+
+public class DTOUser implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private String id;
     private String name;

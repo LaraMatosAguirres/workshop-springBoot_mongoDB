@@ -1,4 +1,4 @@
-git addpackage com.nelio.mongodb;
+package com.nelio.mongodb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

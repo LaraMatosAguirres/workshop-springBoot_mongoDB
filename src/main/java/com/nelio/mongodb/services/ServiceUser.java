@@ -33,4 +33,9 @@ public class ServiceUser {
     public User fromDTO(DTOUser obj){
         return new User(obj.getId(), obj.getName(), obj.getEmail());
     }
+
+    public void delet(String id){
+        findById(id);
+        repo.deleteById(id);
+    }
 }

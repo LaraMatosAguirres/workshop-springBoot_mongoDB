@@ -37,7 +37,7 @@ public class ResouceUser {
     }
 
     @PostMapping
-    public ResponseEntity<List<DTOUser>> findByI(@RequestBody DTOUser user){
+    public ResponseEntity<List<DTOUser>> insert(@RequestBody DTOUser user){
         User obj = service.fromDTO(user);
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -47,6 +47,14 @@ public class ResouceUser {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable String id){
         service.delet(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void>  update(@RequestBody DTOUser user, @PathVariable String id) {
+        User obj = service.fromDTO(user);
+        obj.setId(id);
+        service.update(obj);
         return ResponseEntity.noContent().build();
     }
 }

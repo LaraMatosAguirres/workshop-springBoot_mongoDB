@@ -2,6 +2,7 @@ package com.nelio.mongodb.config;
 
 import com.nelio.mongodb.domains.Post;
 import com.nelio.mongodb.domains.User;
+import com.nelio.mongodb.dtos.DTOAuthor;
 import com.nelio.mongodb.repositories.RepositoryPost;
 import com.nelio.mongodb.repositories.RepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,12 @@ public class InstanciationUser implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/08/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", maria);
-        Post post2 = new Post(null, sdf.parse("23/03/2018"),  "Bom dia", "Acordei feliz hoje!", maria);
-
         repo.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, sdf.parse("21/08/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new DTOAuthor( maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"),  "Bom dia", "Acordei feliz hoje!", new DTOAuthor(maria));
+
+
         repositoryPost.saveAll(Arrays.asList(post1, post2));
     }
 }

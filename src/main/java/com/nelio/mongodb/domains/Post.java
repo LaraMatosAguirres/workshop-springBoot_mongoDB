@@ -1,11 +1,15 @@
 package com.nelio.mongodb.domains;
 
 import com.nelio.mongodb.dtos.DTOAuthor;
+import com.nelio.mongodb.dtos.DTOComent;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "post")
@@ -18,6 +22,8 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private DTOAuthor author;
+
+    private List<DTOComent> coments = new ArrayList<>();
 
     public Post(){
     }
@@ -68,6 +74,14 @@ public class Post implements Serializable {
 
     public void setAuthor(DTOAuthor author) {
         this.author = author;
+    }
+
+    public List<DTOComent> getComents() {
+        return coments;
+    }
+
+    public void setComents(List<DTOComent> coments) {
+        this.coments = coments;
     }
 
     @Override

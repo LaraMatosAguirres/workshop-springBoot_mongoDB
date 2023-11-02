@@ -1,6 +1,7 @@
 package com.nelio.mongodb.resources;
 
 
+import com.nelio.mongodb.domains.Post;
 import com.nelio.mongodb.domains.User;
 import com.nelio.mongodb.dtos.DTOUser;
 import com.nelio.mongodb.services.ServiceUser;
@@ -56,5 +57,11 @@ public class ResouceUser {
         obj.setId(id);
         service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPost(@PathVariable String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPost());
     }
 }

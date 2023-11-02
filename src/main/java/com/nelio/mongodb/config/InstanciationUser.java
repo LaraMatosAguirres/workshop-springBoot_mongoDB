@@ -41,5 +41,7 @@ public class InstanciationUser implements CommandLineRunner {
 
 
         repositoryPost.saveAll(Arrays.asList(post1, post2));
+        maria.getPost().addAll(Arrays.asList(post1, post2));
+        repo.save(maria);
     }
 }
